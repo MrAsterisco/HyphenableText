@@ -30,7 +30,7 @@ HyphenableText can be used as any other SwiftUI view:
 
 ```swift
 HyphenableText(
-    text: "Antidisestablishmentarianism juxtaposed with ultramicroscopic-silicovolcanoconiosis presents an inextricable conundrum of lexical intricacy."
+    "Antidisestablishmentarianism juxtaposed with ultramicroscopic-silicovolcanoconiosis presents an inextricable conundrum of lexical intricacy."
 )
 ```
 

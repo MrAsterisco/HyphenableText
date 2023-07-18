@@ -66,6 +66,10 @@ public struct HyphenableText: View {
   
   public let text: String
   
+  public init(_ text: String) {
+    self.text = text
+  }
+  
   public var body: some View {
     Text(
       text
@@ -81,20 +85,20 @@ struct HyphenableText_Previews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 8) {
       HyphenableText(
-        text: "Antidisestablishmentarianism juxtaposed with ultramicroscopic-silicovolcanoconiosis presents an inextricable conundrum of lexical intricacy."
+        "Antidisestablishmentarianism juxtaposed with ultramicroscopic-silicovolcanoconiosis presents an inextricable conundrum of lexical intricacy."
       )
       .font(.largeTitle)
       .foregroundColor(.red)
       .frame(maxWidth: .infinity, alignment: .leading)
       
       HyphenableText(
-        text: "Cryptococcus neoformans serotype B manifesting pneumonoultramicroscopicsilicovolcanoconiosis perplexes pulmonologists worldwide."
+        "Cryptococcus neoformans serotype B manifesting pneumonoultramicroscopicsilicovolcanoconiosis perplexes pulmonologists worldwide."
       )
       .font(.body)
       .frame(maxWidth: .infinity, alignment: .leading)
       
       HyphenableText(
-        text: "Supercalifragilisticexpialidocious intergalactic hypernova cataclysmic cosmogenesis defies conventional astrophysical comprehension."
+        "Supercalifragilisticexpialidocious intergalactic hypernova cataclysmic cosmogenesis defies conventional astrophysical comprehension."
       )
       .font(.caption)
       .foregroundColor(.secondary)
