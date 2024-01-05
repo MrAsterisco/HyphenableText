@@ -23,7 +23,7 @@ public extension String {
   /// CFStringIsHyphenationAvailableForLocale(_:) returns true. Consider
   /// using CFStringTokenizer to eliminate this assumption.
   func softHyphenateByWord(minimumWordLength: Int = 0, withLocale locale: Locale = .autoupdatingCurrent) -> Self {
-      var substringArray: [String] = self.split(separator: " ", omittingEmptySubsequences: false).map({ String($0) })
+      var substringArray: [String] = split(separator: " ", omittingEmptySubsequences: false).map({ String($0) })
         
       for (i, substring) in substringArray.enumerated() {
           if substring.count >= minimumWordLength {
