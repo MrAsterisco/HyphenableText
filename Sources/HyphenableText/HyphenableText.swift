@@ -16,7 +16,7 @@ public extension String {
     
   /// Split the string using space as a separator and, for those substrings
   /// whose lengths are greater than or equal to minimumWordLength,
-  /// replace them with a softHyphenated version..
+  /// replace them with a softHyphenated version.
   ///
   /// - note: This assumes that words are delineated by
   /// space characters, which may not be correct for all locales where
