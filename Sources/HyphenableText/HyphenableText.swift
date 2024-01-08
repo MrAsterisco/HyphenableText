@@ -13,6 +13,26 @@ public extension String {
   ///
   /// - see: [Wikipedia](https://en.wikipedia.org/wiki/Soft_hyphen).
   static let softHyphen = "\u{00AD}"
+    
+  /// Split the string using space as a separator and, for those substrings
+  /// whose lengths are greater than or equal to minimumWordLength,
+  /// replace them with a softHyphenated version.
+  ///
+  /// - note: This assumes that words are delineated by
+  /// space characters, which may not be correct for all locales where
+  /// CFStringIsHyphenationAvailableForLocale(_:) returns true. Consider
+  /// using CFStringTokenizer to eliminate this assumption.
+  func softHyphenateByWord(minimumWordLength: Int = 0, withLocale locale: Locale = .autoupdatingCurrent) -> Self {
+      var substringArray: [String] = split(separator: " ", omittingEmptySubsequences: false).map({ String($0) })
+        
+      for (i, substring) in substringArray.enumerated() {
+          if substring.count >= minimumWordLength {
+              substringArray[i] = substring.softHyphenated(withLocale: locale)
+          }
+      }
+        
+      return substringArray.joined(separator: " ")
+  }
   
   /// Insert a soft-hyphen character at every possible location in the string.
   ///
@@ -65,15 +85,18 @@ public struct HyphenableText: View {
   @Environment(\.locale) private var locale
   
   public let text: String
+  public let minimumWordLength: Int
   
-  public init(_ text: String) {
+  public init(_ text: String, ignoreWordsShorterThan minimumWordLength: Int = 0) {
     self.text = text
+    self.minimumWordLength = minimumWordLength
   }
   
   public var body: some View {
     Text(
       text
-        .softHyphenated(
+        .softHyphenateByWord(
+          minimumWordLength: minimumWordLength,
           withLocale: locale
         )
     )
